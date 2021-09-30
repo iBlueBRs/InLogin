@@ -1,0 +1,33 @@
+main: com.br.incraft.blue.Main
+version: 0.1
+name: INcraft
+api-version: 1.8
+depend: [PlaceholderAPI]
+commands:
+  ajuda:
+    aliases: [suporte,duvida,help]
+    usage: /<command>
+    description: obter ajuda basica
+  discord:
+    aliases: [dc,discord,link]
+    usage: /<command>
+    description: Pegar convite do discord
+  tag:
+    aliases: [settag,darcargo,add]
+    usage: /<command> <Nome da tag>
+    description: setar tag
+    permission: incraft.tag
+  login:
+    aliases: [entrar,logar,join]
+    usage: /<command> <Login>
+    description: Logar na sua conta
+    permission: incraft.login
+  registrar:
+    aliases: [new,criar,register]
+    usage: /<command> <Senha> <Confirmar Senha>
+    description: Registrar uma nova conta
+    permission: incraft.registrar
+  recuperarSenha:
+    aliases: [recuperar,resetar,resetar senha, trocarsenha]
+    description: Recuperar senha
+    permission: incraft.recuperar
