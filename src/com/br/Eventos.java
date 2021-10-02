@@ -1,12 +1,10 @@
-package com.br.incraft.blue.eventos;
+package com.br;
 
-import com.br.incraft.blue.Main;
 import com.br.login.loginAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -21,17 +19,15 @@ public class Eventos implements Listener {
     public void aoEntrar(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         if (!loginAPI.EstaRegistrado(p)) {
-            p.sendMessage("§f[§6§lLogin InCraft§f] \n§aRegistre-se usando §c/registrar <Senha> <Senha> \n" +
-                    "§cTodas suas informações pessoais são criptogradas. \n Nós prezamos por sua segurança" +
-                    "\n §Por isso use uma senha forte.");
+            p.sendMessage(Main.plugin.getConfig().getString("registrar"));
         } else {
-            p.sendMessage("§f[§6§lLogin InCraft§f] \n§aEntre por-favor usando §c/login <Senha> ");
+            p.sendMessage(Main.plugin.getConfig().getString("login"));
         }
         new BukkitRunnable() {
             @Override
             public void run() {
                 if (!loginAPI.estaLogado(p)) {
-                    p.kickPlayer("§6§InCraft \n §eVocê demorou muito para logar");
+                    p.kickPlayer(Main.plugin.getConfig().getString("demorou-Login"));
                 }
 
             }
@@ -41,16 +37,11 @@ public class Eventos implements Listener {
     @EventHandler
     public void aoSair(PlayerQuitEvent e) {
         Player p = e.getPlayer();
+        String name = p.getName();
         e.setQuitMessage(null);
         if (p.hasPermission("staff"))
-            Bukkit.broadcastMessage(" §f[§c-§f]§e " + p.getName() + " §fSaiu");
+            Bukkit.broadcastMessage(Main.plugin.getConfig().getString("staff-saiu".replaceAll("%player%", name)));
     }
-
-    @EventHandler
-    public void chat(AsyncPlayerChatEvent e) {
-        e.setFormat("&a[G]" + e.getPlayer().getPlayerListName() + "§7- >" + e.getMessage());
-    }
-
     @EventHandler
     public void naoMover(PlayerMoveEvent e) {
         Player p = e.getPlayer();
@@ -58,6 +49,12 @@ public class Eventos implements Listener {
             p.teleport(e.getFrom());
         }
     }
+    @EventHandler
+    public void entrou(PlayerJoinEvent join) {
+        Player p = join.getPlayer();
+        String name = p.getName();
+        join.setJoinMessage(null);
+        Bukkit.broadcastMessage(Main.plugin.getConfig().getString("staff-entrou".replaceAll("%player%", p.getName())));
+    }
 }
-
 
