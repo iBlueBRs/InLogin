@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="FCBlue:jar">
+    <output-path>$USER_HOME$/Documents</output-path>
+    <root id="archive" name="FCBlue.jar">
+      <element id="module-output" name="INcraft" />
+    </root>
+  </artifact>
+</component>

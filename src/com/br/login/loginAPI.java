@@ -1,9 +1,8 @@
 package com.br.login;
 
-import com.br.incraft.blue.Main;
+import com.br.Main;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 

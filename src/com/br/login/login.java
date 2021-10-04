@@ -1,6 +1,6 @@
 package com.br.login;
 
-import com.br.incraft.blue.Main;
+import com.br.Main;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

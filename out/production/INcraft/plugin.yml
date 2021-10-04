@@ -2,7 +2,7 @@ main: com.br.incraft.blue.Main
 version: 0.1
 name: INcraft
 api-version: 1.8
-depend:
+depend: 
 commands:
   ajuda:
     aliases: [suporte,duvida,help]
